@@ -21,12 +21,14 @@ regd_users.post("/register", (req, res) => {
     const password = req.body.password;
 
     if (!username || !password) {
+
         return res.status(404).json({
             message: "Unable to register user."
         });
     }
 
     if (users.find((user) => user.username === username)) {
+
         return res.status(404).json({
             message: "User already exists!"
         });
@@ -49,6 +51,7 @@ regd_users.post("/login", (req, res) => {
     const password = req.body.password;
 
     if (!username || !password) {
+
         return res.status(404).json({
             message: "Error logging in"
         });
@@ -82,7 +85,7 @@ regd_users.post("/login", (req, res) => {
 });
 
 // ADD/MODIFY REVIEW
-regd_users.put("/review/:isbn", (req, res) => {
+regd_users.put("/auth/review/:isbn", (req, res) => {
 
     const isbn = req.params.isbn;
     const review = req.query.review;
@@ -107,7 +110,7 @@ regd_users.put("/review/:isbn", (req, res) => {
 });
 
 // DELETE REVIEW
-regd_users.delete("/review/:isbn", (req, res) => {
+regd_users.delete("/auth/review/:isbn", (req, res) => {
 
     const isbn = req.params.isbn;
     const username = req.session.authorization.username;
