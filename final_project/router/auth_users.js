@@ -11,6 +11,7 @@ const isValid = (username) => {
   );
 
   if (userswithsameusername.length > 0) {
+    
     return true;
   } else {
     return false;
@@ -118,9 +119,9 @@ regd_users.delete("/auth/review/:isbn", (req, res) => {
 
   delete books[isbn].reviews[req.session.authorization.username];
 
-  return res.status(200).json({
-    message: "Review deleted successfully"
-  });
+return res.status(200).json({
+  message: `Review for ISBN ${isbn} deleted`
+});
 
 });
 
